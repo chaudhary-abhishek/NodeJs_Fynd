@@ -1,0 +1,18 @@
+const mongoClient = require('./exportConnection'); // importing mongoClient from custom export client module
+
+
+function showCollectionData(){
+ try{
+    const fetchCollection =  mongoClient.db('College').collection('Students');
+    const fetchCollectionData = fetchCollection.find({});
+    fetchCollectionData.forEach(data=>{  //fetching individual document
+       console.log(data.name);
+    })
+ }
+ catch(e){
+    throw e;
+ }
+ //mongoClient.close(); // close connection
+}
+
+showCollectionData();
